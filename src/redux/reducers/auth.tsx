@@ -1,10 +1,10 @@
 interface AuthState {
-  auth: any; // Burada auth nesnesinin türünü belirtmelisiniz
+  auth: any;
 }
 
 interface AuthAction {
   type: string;
-  payload: any; // Burada action.payload'ın türünü belirtmelisiniz
+  payload: any;
 }
 
 const authReducer = (state: AuthState = { auth: null }, action: AuthAction) => {
