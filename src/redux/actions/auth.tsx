@@ -27,6 +27,10 @@ export const registerAction =
           type: "REGISTER",
           payload: response.data,
         });
+        toast("Hesabın oluşturuldu", {
+          position: "top-right",
+          autoClose: 5000,
+        });
         window.location.href = "/";
       } else {
         console.log(response.data.message);
@@ -58,6 +62,12 @@ export const loginAction =
           type: "LOGIN",
           payload: response.data,
         });
+        toast("Giriş başarılı", {
+          position: "top-right",
+          autoClose: 5000,
+        });
+
+        window.location.href = "/";
       } else {
         toast(response.data.message, {
           position: "top-right",

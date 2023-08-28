@@ -1,13 +1,4 @@
-interface AuthState {
-  auth: any;
-}
-
-interface AuthAction {
-  type: string;
-  payload: any;
-}
-
-const authReducer = (state: AuthState = { auth: null }, action: AuthAction) => {
+const authReducer = (state: any = { auth: null }, action: any) => {
   switch (action.type) {
     case "REGISTER":
       localStorage.setItem("auth", JSON.stringify(action.payload));

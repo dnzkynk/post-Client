@@ -4,14 +4,23 @@ import Home from "./pages/Home";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import Navbar from "./components/Navbar";
+import Modal from "./components/Modal";
+import { useSelector } from "react-redux";
 
 function App() {
+  const tokenString = localStorage.getItem("auth");
+  const token = tokenString !== null ? JSON.parse(tokenString) : null;
+  const { modal } = useSelector((state: any) => state.modal);
+
   return (
     <div>
       <BrowserRouter>
+        {token && <Navbar />}
+        {modal && <Modal />}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={token ? <Home /> : <Auth />} />
+          <Route path="/auth" element={!token ? <Auth /> : <Home />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />

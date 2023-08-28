@@ -1,9 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import { loginAction, registerAction } from "../redux/actions/auth";
 import { useDispatch } from "react-redux";
+import useSignUpState from "../hooks/signUp";
 
 export default function Auth() {
-  const [signUp, setSignUp] = useState(true);
+  const { signUp, setSignUp } = useSignUpState();
   const [authData, setAuthData] = useState({
     username: "",
     email: "",
