@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import Navbar from "./components/Navbar";
+
 import Modal from "./components/Modal";
 import { useSelector } from "react-redux";
 
@@ -16,7 +16,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        {token && <Navbar />}
         {modal && <Modal />}
         <Routes>
           <Route path="/" element={token ? <Home /> : <Auth />} />

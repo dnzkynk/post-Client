@@ -1,12 +1,22 @@
+import { ChangeEvent, useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 
-export default function Navbar() {
+export default function Navbar({ onSearch }: any) {
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch(query);
+  };
+
   const logoutFunc = () => {
     localStorage.clear();
     window.location.href = "/auth";
   };
+
   const openModal = () => {
     dispatch({ type: "MODAL", payload: true });
   };
@@ -20,6 +30,8 @@ export default function Navbar() {
         <input
           type="text"
           placeholder="Search"
+          value={searchQuery}
+          onChange={handleChange} // Call handleChange on input change
           className="px-3 py-2 border rounded-md outline-none focus:border-blue-400 transition-colors"
         />
         <button
